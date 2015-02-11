@@ -1,0 +1,72 @@
+#!/bin/bash
+# Configure live iso
+set -e -u -x
+shopt -s extglob
+
+# Set locales
+sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
+locale-gen
+
+# Sudo to allow no password
+sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' /etc/sudoers
+chown -c root:root /etc/sudoers
+chmod -c 0440 /etc/sudoers
+
+# Hostname
+echo "archbang" > /etc/hostname
+
+#  Hosts file to archbang (test version)
+sed -i "0,/127.0.0.1/s/localhost/archbang/2" /etc/hosts
+
+# Vconsole
+echo "KEYMAP=us" > /etc/vconsole.conf
+echo "FONT=" >> /etc/vconsole.conf
+
+# Locale
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "LC_COLLATE=C" >> /etc/locale.conf
+
+# Set clock to UTC
+hwclock --systohc --utc
+
+# Timezone
+ln -sf /usr/share/zoneinfo/Canada/Montreal /etc/localtime
+
+# Uncomment mirrors
+sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist \
+	/etc/pacman.d/archassault-mirrorlist
+
+# Logs files live
+sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
+
+# Add live user
+useradd -m -p "" -g users -G "wheel" -s /bin/bash live
+chown live /home/live
+
+# Remove gparted from openbox menu
+rm /usr/share/applications/gparted.desktop
+
+# Remove gtk-docs
+rm -rf /usr/share/{doc,gtk-doc,info,gtk-2.0,gtk-3.0}
+
+# Clean locales
+cd /usr/share/locale
+rm -rf !(en_US|en_GB|en\@quot|locale.alias)
+
+# Remove gnome icons
+#rm -rf /usr/share/icons/gnome
+
+# ArchAssualt repo
+PCONF="/etc/pacman.conf"
+echo -e "\n[archassault]" >> ${PCONF}
+echo "SigLevel = Required DatabaseOptional TrustedOnly" >> ${PCONF}
+echo "Include = /etc/pacman.d/archassault-mirrorlist" >> ${PCONF}
+
+if [ $(uname -m) == "x86_64" ]; then
+	sed -i -e'/^#\[multilib\]/{s/#//;N;s/#//;N;s/#//}' ${PCONF}
+fi
+
+# Start required systemd services
+systemctl enable pacman-init.service lastmin.service NetworkManager.service lxdm.service
+#systemctl set-default multi-user.target
+
