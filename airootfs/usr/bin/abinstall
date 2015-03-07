@@ -672,13 +672,13 @@ install_root_image(){
   rsync -a --info=progress2 $BYPASS/ $DESTDIR/
   umount -l $BYPASS
 # remove abinstall from openbox menu
-  sed -i '/abinstall/,+3d' $DESTDIR/home/live/.config/obmenu-generator/schema.pl
+  sed -i '/abinstall/,+3d' $DESTDIR/home/ablive/.config/obmenu-generator/schema.pl
 # set xkeyboard map
-  sed -i "s/setxkbmap us/setxkbmap ${KEYMAP_XKB:0:2}/g" $DESTDIR/home/live/.config/openbox/autostart
+  sed -i "s/setxkbmap us/setxkbmap ${KEYMAP_XKB:0:2}/g" $DESTDIR/home/ablive/.config/openbox/autostart
 # add in password again for sudo
   sed -i '/^%wheel/s/NOPASSWD://g' $DESTDIR/etc/sudoers
-# set /home/live with user permissions
-  arch_chroot "chown live:users /home/live -R &> /dev/null"
+# set /home/ablive with user permissions
+  arch_chroot "chown ablive:users /home/ablive -R &> /dev/null"
 # set up kernel for mkiniticpio
   cp /run/archiso/bootmnt/arch/boot/${ARCHI}/vmlinuz ${DESTDIR}/boot/vmlinuz-linux
 # put live driver into new install
@@ -983,7 +983,7 @@ root_password(){
 }
 
 #CREATE NEW USER
-# chenged to suit live image install
+# changed to suit live image install
   create_new_user(){
   print_title "CREATE NEW USER"
   echo

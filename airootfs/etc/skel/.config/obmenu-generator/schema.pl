@@ -1,4 +1,4 @@
-require '/home/live/.config/obmenu-generator/config.pl';
+require '/home/ablive/.config/obmenu-generator/config.pl';
 
 our $SCHEMA = [
     #{sep => 'ArchBang'},

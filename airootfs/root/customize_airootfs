@@ -40,8 +40,8 @@ sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist \
 sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
 
 # Add live user
-useradd -m -p "" -g users -G "wheel" -s /bin/bash live
-chown live /home/live
+useradd -m -p "" -g users -G "wheel" -s /bin/bash ablive
+chown ablive /home/ablive
 
 # Remove gparted from openbox menu
 rm /usr/share/applications/gparted.desktop

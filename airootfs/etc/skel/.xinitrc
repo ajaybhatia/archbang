@@ -10,7 +10,7 @@ fi
 /usr/bin/xdg-user-dirs-update
 
 # configure obmenu user
-sed -i 's/live/'$(whoami)'/' ~/.config/obmenu-generator/schema.pl \
+sed -i 's/ablive/'$(whoami)'/' ~/.config/obmenu-generator/schema.pl \
                              ~/.config/obmenu-generator/config.pl  
 
 
