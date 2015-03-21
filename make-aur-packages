@@ -114,3 +114,5 @@ dbname=repo
 cd $repo_dir
 repo-add --quiet --new $dbname.db.tar.gz *-$(uname -m).pkg.tar.xz
 
+# if you have problems with ..any.. packages try this
+#   repo-add --quiet --new $dbname.db.tar.gz *-any.pkg.tar.xz 

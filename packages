@@ -36,6 +36,7 @@ tint2
 dmenu
 volumeicon
 lxdm
+conky
 
 # extra tools
 gparted
