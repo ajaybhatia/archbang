@@ -84,7 +84,6 @@ rfkill
 networkmanager
 network-manager-applet
 xfce4-notifyd
-#connman
 gnome-keyring
 wvdial
 
