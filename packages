@@ -101,6 +101,7 @@ parted
 gptfdisk
 ddrescue
 dmraid
+f2fs-tools
 
 # Intel microcode
 intel-ucode
