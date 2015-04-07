@@ -28,7 +28,7 @@
 
 # Menu and installation
   checklist=( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 )
-  KEYMAP_XKB="gb"
+  KEYMAP_XKB="us"
   EDIT="nano"
 
 # Architecture
