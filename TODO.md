@@ -1,3 +1,4 @@
 Edit README/DOC wiki
-remove etc-mount from systemd/system once installed?
+remove obkeys pipe menu... check schema
 
+look at LUKS function.
