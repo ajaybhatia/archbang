@@ -22,7 +22,7 @@
 # modifies by Mr Green for ArchBang Linux
 
 packages_file=$PWD/aur_packages
-repo_dir=~/Dropbox/repo/$(uname -m)
+repo_dir=~/bigdrive/Dropbox/repo/$(uname -m)
 build_dir=/tmp/aur-build
 
 PS3="Choose a number: "

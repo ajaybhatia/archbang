@@ -84,7 +84,6 @@ rfkill
 networkmanager
 network-manager-applet
 xfce4-notifyd
-#connman
 gnome-keyring
 wvdial
 
@@ -102,6 +101,7 @@ parted
 gptfdisk
 ddrescue
 dmraid
+f2fs-tools
 
 # Intel microcode
 intel-ucode
