@@ -304,8 +304,8 @@ select_keymap_xkb(){
     getkeymap_xkb
     read_input_text "Confirm keymap: $KEYMAP_XKB"
   done
-  # We need to edit openboxs autostart to add selected map
-  setxkbmap ${KEYMAP_XKB:0:2}
+  # we set keymap for X later on in script....
+  # setxkbmap ${KEYMAP_XKB:0:2}
 }
 
 #}}}
@@ -674,7 +674,7 @@ install_root_image(){
 # remove abinstall from openbox menu
   sed -i '/abinstall/,+3d' $DESTDIR/home/ablive/.config/obmenu-generator/schema.pl
 # set xkeyboard map
-  sed -i "s/setxkbmap us/setxkbmap ${KEYMAP_XKB:0:2}/g" $DESTDIR/home/ablive/.config/openbox/autostart
+  sed -i "s/us/${KEYMAP_XKB:0:2}/g" $DESTDIR/etc/X11/xorg.conf.d/01-keyboard-layout.conf
 # add in password again for sudo
   sed -i '/^%wheel/s/NOPASSWD://g' $DESTDIR/etc/sudoers
 # set /home/ablive with user permissions
