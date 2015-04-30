@@ -9,7 +9,7 @@
 #xbacklight -set 100 &
 #/usr/bin/synclient TouchpadOff=1 &
 #xxkb &
-setxkbmap us &
+#setxkbmap us &
 
 (sleep 2 && spacefm -d) &
 (sleep 3 && nm-applet) &
