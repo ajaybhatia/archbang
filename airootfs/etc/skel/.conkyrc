@@ -57,7 +57,6 @@ Super+e$alignr Editor
 Super+w$alignr Web Browser
 Super+q$alignr Force Quit
 Super+r$alignr Read the DOC
-<<<<<<< HEAD
 Alt+F3$alignr Dmenu
 
 =======
@@ -68,4 +67,3 @@ Super+c$alignr Move to Center
 Super+Arrow$alignr Move
 Alt+F3$alignr Dmenu
 Alt+Super+Arrow$alignr Resize
->>>>>>> 9897d09d06560fecf13f0d6ab7d141b4eb26652d

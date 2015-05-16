@@ -232,10 +232,10 @@ make_efiboot() {
 remove_useless_shortcuts()
 {
 useless_path="${work_dir}/${arch}/airootfs/usr/share/applications"
-rm ${useless_path}/7zFM.desktop
+#rm ${useless_path}/7zFM.desktop
 rm ${useless_path}/avahi-discover.desktop
 rm ${useless_path}/bssh.desktop
-rm ${useless_path}/htop.desktop
+#rm ${useless_path}/htop.desktop
 rm ${useless_path}/bvnc.desktop
 }
 

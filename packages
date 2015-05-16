@@ -3,7 +3,7 @@ zip
 unzip
 unrar
 p7zip
-arj
+#arj
 xz
 lzop
 
@@ -143,5 +143,4 @@ xf86-video-voodoo
 # ArchAssualt
 archassault-keyring
 archassault-mirrorlist
-
-
+archassault-artwork
