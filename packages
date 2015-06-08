@@ -88,6 +88,7 @@ gnome-keyring
 wvdial
 
 # Develop Tools
+btrfs-progs
 dialog
 sudo
 squashfs-tools
