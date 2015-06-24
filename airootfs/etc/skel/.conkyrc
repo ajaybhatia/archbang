@@ -57,13 +57,10 @@ Super+e$alignr Editor
 Super+w$alignr Web Browser
 Super+q$alignr Force Quit
 Super+r$alignr Read the DOC
-Alt+F3$alignr Dmenu
-
-=======
 Super+a$alignr Toggle Maximize
 Super+h$alignr Toggle Horizontal
 Super+v$alignr Toggle Vertical
 Super+c$alignr Move to Center
 Super+Arrow$alignr Move
-Alt+F3$alignr Dmenu
+Alt+F3$alignr Gmrun
 Alt+Super+Arrow$alignr Resize

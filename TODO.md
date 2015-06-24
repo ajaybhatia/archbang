@@ -1,4 +1,5 @@
 Edit README/DOC wiki
-remove obkeys pipe menu... check schema
 
-look at LUKS function.
+
+Dark theme? gtk2/3
+

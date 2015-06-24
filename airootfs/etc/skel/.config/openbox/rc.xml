@@ -39,7 +39,7 @@ following: 'Mouse' - where the mouse is, or
 'Active' - where the active window is -->
 </placement>
 <theme>
-<name>Carbon</name>
+<name>DeLorean-Dark</name>
 <titleLayout>LIMC</titleLayout>
 <!--
 available characters are NDSLIMC, each can occur at most once.
@@ -237,10 +237,10 @@ cases. -->
 </keybind>
 <keybind key="A-F3">
 <action name="Execute">
-<command>~/.config/dmenu/dmenu-bind.sh</command>
+<command>gmrun</command>
 <startupnotify>
 <enabled>yes</enabled>
-<name>dmenu</name>
+<name>gmrun</name>
 </startupnotify>
 </action>
 </keybind>

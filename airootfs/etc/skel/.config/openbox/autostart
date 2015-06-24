@@ -3,7 +3,10 @@
 (sleep 1s && tint2) &
 
 # Set wallpaper
-(sleep 1s && feh --bg-scale /usr/share/archassault/backgrounds/split-aa.jpg)  &
+(sleep 1s && nitrogen --restore) &
+
+# eye candy, shadows, fading
+(sleep 3 && compton -f -b) &
 
 # Enable as required
 #xbacklight -set 100 &
@@ -11,7 +14,14 @@
 #xxkb &
 #setxkbmap us &
 
+# File manager (daemon mode)
 (sleep 2 && spacefm -d) &
+
+# Networking system tray applet
 (sleep 3 && nm-applet) &
+
+# Volume control
 (sleep 3 && volumeicon) &
+
+# Onscreen system stats
 (sleep 2 && conky) &

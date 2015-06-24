@@ -37,6 +37,9 @@ dmenu
 volumeicon
 lxdm
 conky
+nitrogen
+xcompmgr
+gmrun
 
 # extra tools
 gparted
@@ -62,7 +65,8 @@ firefox
 gstreamer0.10-base-plugins
 gstreamer0.10-good
 scrot
-lxde-icon-theme
+mate-themes-extras
+mate-icon-theme-faenza
 
 # Media
 deadbeef
