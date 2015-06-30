@@ -39,7 +39,7 @@ following: 'Mouse' - where the mouse is, or
 'Active' - where the active window is -->
 </placement>
 <theme>
-<name>DeLorean-Dark</name>
+<name>Carbon</name>
 <titleLayout>LIMC</titleLayout>
 <!--
 available characters are NDSLIMC, each can occur at most once.
@@ -176,6 +176,50 @@ cases. -->
 <command>systemctl poweroff</command>
 </action>
 </keybind>
+
+<!-- <aero snap addition> -->
+    <keybind key="W-S-Left">
+        <action name="UnmaximizeFull"/>
+        <action name="MaximizeVert"/>
+        <action name="MoveResizeTo">
+            <width>50%</width>
+        </action>
+       <action name="MoveToEdge">
+           <direction>west</direction>
+       </action>
+    </keybind>
+    <keybind key="W-S-Right">
+        <action name="UnmaximizeFull"/>
+        <action name="MaximizeVert"/>
+        <action name="MoveResizeTo">
+            <width>50%</width>
+        </action>
+        <action name="MoveToEdge">
+            <direction>east</direction>
+        </action>
+    </keybind>
+    <keybind key="W-S-Up">
+        <action name="UnmaximizeFull"/>
+        <action name="MaximizeHorz"/>
+        <action name="MoveResizeTo">
+            <height>50%</height>
+        </action>
+        <action name="MoveToEdge">
+            <direction>north</direction>
+        </action>
+    </keybind>
+    <keybind key="W-S-Down">
+        <action name="UnmaximizeFull"/>
+        <action name="MaximizeHorz"/>
+        <action name="MoveResizeTo">
+            <height>50%</height>
+        </action>
+        <action name="MoveToEdge">
+            <direction>south</direction>
+        </action>
+    </keybind>
+<!-- </aero snap addition> -->
+
 <keybind key="C-A-Right">
 <action name="DesktopRight">
 <wrap>no</wrap>
@@ -237,10 +281,10 @@ cases. -->
 </keybind>
 <keybind key="A-F3">
 <action name="Execute">
-<command>gmrun</command>
+<command>~/.config/dmenu/dmenu-bind.sh</command>
 <startupnotify>
 <enabled>yes</enabled>
-<name>gmrun</name>
+<name>dmenu</name>
 </startupnotify>
 </action>
 </keybind>

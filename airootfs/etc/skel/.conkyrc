@@ -21,7 +21,7 @@ default_shade_color 000000
 default_outline_color d9d7d6
 alignment tr
 gap_x 12
-gap_y 12
+gap_y 50
 no_buffers yes
 uppercase no
 cpu_avg_samples 2
@@ -62,5 +62,5 @@ Super+h$alignr Toggle Horizontal
 Super+v$alignr Toggle Vertical
 Super+c$alignr Move to Center
 Super+Arrow$alignr Move
-Alt+F3$alignr Gmrun
+Alt+F3$alignr Dmenu
 Alt+Super+Arrow$alignr Resize

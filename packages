@@ -40,6 +40,7 @@ conky
 nitrogen
 xcompmgr
 gmrun
+plank
 
 # extra tools
 gparted
@@ -65,7 +66,7 @@ firefox
 gstreamer0.10-base-plugins
 gstreamer0.10-good
 scrot
-mate-themes-extras
+mate-themes
 mate-icon-theme-faenza
 
 # Media
@@ -148,4 +149,4 @@ xf86-video-voodoo
 # ArchAssualt
 archassault-keyring
 archassault-mirrorlist
-archassault-artwork
+#archassault-artwork

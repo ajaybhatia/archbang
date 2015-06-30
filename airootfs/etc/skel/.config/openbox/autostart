@@ -25,3 +25,6 @@
 
 # Onscreen system stats
 (sleep 2 && conky) &
+
+# Desktop launcher dock
+(sleep 2 && plank) &
