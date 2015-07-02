@@ -1,9 +1,8 @@
 Edit README/DOC wiki
 
 
-Dark theme? gtk2/3
+plank not starting installed
 
-BlackMATE (mate-themes) (gtk-engine-unico)
-Oxygen (oxygen-icons)
-or
-mate-faenza-icons (grey)
+nm-applet twice (easy fix)
+
+
