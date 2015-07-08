@@ -5,9 +5,6 @@
 # Set wallpaper
 (sleep 1s && nitrogen --restore) &
 
-# eye candy, shadows, fading
-(sleep 3 && compton -f -b) &
-
 # Enable as required
 #xbacklight -set 100 &
 #/usr/bin/synclient TouchpadOff=1 &
