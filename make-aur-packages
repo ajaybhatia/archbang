@@ -19,7 +19,7 @@
 
 # TODO: package archive regexp or glob; it should match on arch
 
-# modifies by Mr Green for ArchBang Linux
+# modified by Mr Green for ArchBang Linux
 
 packages_file=$PWD/aur_packages
 repo_dir=~/Dropbox/repo/$(uname -m)
@@ -76,10 +76,13 @@ for pkg in $(sed s/#.*$// < "$packages_file") ; do
     fi
 
     cd "$build_dir"
-    curl -O https://aur.archlinux.org/packages/${pkg:0:2}/$pkg/$pkg.tar.gz
+   # curl -O https://aur.archlinux.org/packages/${pkg:0:2}/$pkg/$pkg.tar.gz
 
+	curl -O https://aur4.archlinux.org/cgit/aur.git/snapshot/${pkg}.tar.gz
+
+#	git clone https://aur4.archlinux.org/${pkg}.git/
     tar xf $pkg.tar.gz
-
+#	cd ${pkg}
     # Try to build with dependencies at first.
     (
         export PKGDEST="$repo_dir" 
@@ -91,7 +94,7 @@ for pkg in $(sed s/#.*$// < "$packages_file") ; do
     if [ $error = 0 ] ; then
         continue
     fi
-
+exit
     # If the dependencies fail (probably because one of the packages
     # depends on another further down in aur_packages), try to build
     # with no deps.
