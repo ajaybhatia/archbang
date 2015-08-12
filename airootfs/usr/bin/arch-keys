@@ -16,5 +16,4 @@ systemctl start haveged
 echo "Set up pacman keys"
 pacman-key --init
 pacman-key --populate archlinux
-pacman-key --populate archassault
 

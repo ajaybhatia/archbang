@@ -1,3 +1,4 @@
+
 ## Archive Tools
 zip
 unzip
@@ -146,7 +147,3 @@ xf86-video-trident
 xf86-video-vesa
 xf86-video-voodoo
 
-# ArchAssualt
-archassault-keyring
-archassault-mirrorlist
-#archassault-artwork

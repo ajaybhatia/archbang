@@ -33,8 +33,7 @@ hwclock --systohc --utc
 ln -sf /usr/share/zoneinfo/Canada/Montreal /etc/localtime
 
 # Uncomment mirrors
-sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist \
-	/etc/pacman.d/archassault-mirrorlist
+sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist
 
 # Logs files live
 sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
@@ -55,16 +54,6 @@ rm -rf !(en_US|en_GB|en\@quot|locale.alias)
 
 # Remove gnome icons
 #rm -rf /usr/share/icons/gnome
-
-# ArchAssualt repo
-PCONF="/etc/pacman.conf"
-echo -e "\n[archassault]" >> ${PCONF}
-echo "SigLevel = Required DatabaseOptional TrustedOnly" >> ${PCONF}
-echo "Include = /etc/pacman.d/archassault-mirrorlist" >> ${PCONF}
-
-if [ $(uname -m) == "x86_64" ]; then
-	sed -i -e'/^#\[multilib\]/{s/#//;N;s/#//;N;s/#//}' ${PCONF}
-fi
 
 # Start required systemd services
 systemctl enable pacman-init.service lastmin.service NetworkManager.service lxdm.service

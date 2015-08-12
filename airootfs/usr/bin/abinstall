@@ -318,7 +318,6 @@ configure_mirrorlist(){
   pause_function
 
   $EDIT /etc/pacman.d/mirrorlist
-  $EDIT /etc/pacman.d/archassault-mirrorlist
 }
 #}}}
 #UMOUNT PARTITIONS {{{
@@ -685,7 +684,6 @@ install_root_image(){
   cp /etc/X11/xorg.conf.d/20-gpudriver.conf ${DESTDIR}/etc/X11/xorg.conf.d/20-gpudriver.conf &>/dev/null
 # copy over new mirrorlist
   cp /etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist
-  cp /etc/pacman.d/archassault-mirrorlist ${DESTDIR}/etc/pacman.d/archassualt-mirrorlist
 # Clean up new install
   rm -f ${DESTDIR}/usr/bin/abinstall &> /dev/null
   rm -f ${DESTDIR}/usr/bin/lastmin &> /dev/null
@@ -714,7 +712,7 @@ install_root_image(){
 
 # Stop pacman complaining
   arch_chroot "/usr/bin/mkdir -p /var/lib/pacman/sync"
-  arch_chroot "/usr/bin/touch /var/lib/pacman/sync/{archassault.db,core.db,extra.db,community.db,multilib.db}"
+  arch_chroot "/usr/bin/touch /var/lib/pacman/sync/{core.db,extra.db,community.db}"
 
 }
 
