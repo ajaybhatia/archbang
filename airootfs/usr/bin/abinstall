@@ -859,7 +859,7 @@ configure_bootloader(){
   print_warning "\tWARNING: There is no support for GRUB + LUKS/LVM."
   if [[ $UEFI -eq 1 ]]; then
     print_warning "\tUEFI Mode Detected"
-    bootloaders_list=("Grub2" "Syslinux" "Gummiboot" "Skip")
+    bootloaders_list=("Grub2" "Syslinux" "Skip")
   else
     print_warning "\tBIOS Mode Detected"
     bootloaders_list=("Grub2" "Syslinux" "Skip")
@@ -877,10 +877,6 @@ configure_bootloader(){
         break
         ;;
       3)
-        [[ $UEFI -eq 1 ]] && bootloader="Gummiboot"
-        break
-        ;;
-      4)
         [[ $UEFI -eq 1 ]] && break || bootloader="Skip"
         ;;
       *)
@@ -945,27 +941,6 @@ configure_bootloader(){
             ;;
         esac
       done
-      ;;
-    Gummiboot)
-      print_title "INSTALL GUMMIBOOT"
-      print_info "Gummiboot is a UEFI boot manager written by Kay Sievers and Harald Hoyer. It is simple to configure, but can only start EFI executables, the Linux kernel EFISTUB, UEFI Shell, grub.efi, and such."
-      print_warning "\tGummiboot heavily suggests that /boot is mounted to the EFI partition, not /boot/efi, in order to simplify updating and configuration."
-
-      arch_chroot "gummiboot install"
-      print_warning "Please check your .conf file"
-      partuuid=`blkid -s PARTUUID ${ROOT_DISK} | awk '{print $2}' | sed 's/"//g' | sed 's/^.*=//'`
-      if [[ $LUKS -eq 1 ]]; then
-            echo -e "title\tArch Linux\nlinux\t/vmlinuz-linux\ninitrd\t/initramfs-linux.img\noptions\tcryptdevice=\/dev\/${LUKS_DISK}:luks root=\/dev\/mapper\/${ROOT_PART} rw" > ${DESTDIR}/boot/loader/entries/arch.conf
-      elif [[ $LVM -eq 1 ]]; then
-            echo -e "title\tArch Linux\nlinux\t/vmlinuz-linux\ninitrd\t/initramfs-linux.img\noptions\troot=\/dev\/mapper\/${ROOT_PART} rw" > ${DESTDIR}/boot/loader/entries/arch.conf
-      else
-            echo -e "title\tArch Linux\nlinux\t/vmlinuz-linux\ninitrd\t/initramfs-linux.img\noptions\troot=PARTUUID=${partuuid} rw" > ${DESTDIR}/boot/loader/entries/arch.conf
-      fi
-
-      echo -e "default  arch\ntimeout  5" > ${DESTDIR}/boot/loader/loader.conf
-      pause_function
-      $EDIT ${DESTDIR}/boot/loader/entries/arch.conf
-      $EDIT ${DESTDIR}/boot/loader/loader.conf
       ;;
   esac
 }

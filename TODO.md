@@ -1,8 +1,7 @@
 Edit README/DOC wiki
 
+64bit packages up to date
+i686 need building
 
-plank not starting installed
-
-nm-applet twice (easy fix)
-
+update git once isos built
 

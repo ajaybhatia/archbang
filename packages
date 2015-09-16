@@ -41,7 +41,6 @@ conky
 nitrogen
 xcompmgr
 gmrun
-plank
 
 # extra tools
 gparted
@@ -78,7 +77,6 @@ obconf
 lxappearance
 lxinput
 lxrandr
-obmenu-generator
 
 # Network Tools
 tcl
