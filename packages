@@ -44,6 +44,7 @@ gmrun
 
 # extra tools
 gparted
+dkms
 
 # Xorg Extras
 fontconfig
