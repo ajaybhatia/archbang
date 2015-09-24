@@ -10,7 +10,7 @@ set -o nounset
 # Try to make this script yield to other processes IO-wise.
 ionice -c idle -p $$
 
-iso_name=archbang
+iso_name=archbang-rc
 iso_label="ARCHBANG"
 iso_version=$(date +%y%m%d)
 install_dir=arch

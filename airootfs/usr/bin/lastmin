@@ -17,3 +17,5 @@ if [ -n "$(grep -o 'sshd=on' /proc/cmdline)" ]; then
     systemctl start sshd
 fi
 
+
+
