@@ -5,3 +5,4 @@ i686 need building
 
 update git once isos built
 
+switch too abif

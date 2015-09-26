@@ -1,6 +1,6 @@
 include "/home/live/.gtkrc-2.0.mine"
 gtk-theme-name="BlackMATE"
-gtk-icon-theme-name="matefaenzagray"
+gtk-icon-theme-name="Adwaita"
 gtk-font-name="Sans 10"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH

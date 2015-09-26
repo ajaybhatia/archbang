@@ -12,7 +12,7 @@ our $SCHEMA = [
 
 	{sep => undef},
 
-        {item => ['lxterminal -e sudo abinstall',     'Install',      '']},
+        {item => ['lxterminal -e sudo abif',     'Install',      '']},
         {item => ['update_doc',    'Guide',        '']},
         {sep => undef},
 

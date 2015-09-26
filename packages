@@ -67,7 +67,7 @@ gstreamer0.10-base-plugins
 gstreamer0.10-good
 scrot
 mate-themes
-mate-icon-theme-faenza
+#mate-icon-theme-faenza
 
 # Media
 deadbeef
@@ -145,3 +145,6 @@ xf86-video-trident
 xf86-video-vesa
 xf86-video-voodoo
 
+# aur packages
+base-devel
+git
