@@ -56,6 +56,6 @@ rm -rf !(en_US|en_GB|en\@quot|locale.alias)
 #rm -rf /usr/share/icons/gnome
 
 # Start required systemd services
-systemctl enable pacman-init.service lastmin.service NetworkManager.service lxdm.service
+systemctl enable pacman-init.service lastmin.service NetworkManager.service lxdm.service -f
 #systemctl set-default multi-user.target
 

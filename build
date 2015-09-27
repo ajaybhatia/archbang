@@ -12,7 +12,7 @@ ionice -c idle -p $$
 
 iso_name=archbang-rc
 iso_label="ARCHBANG"
-iso_version=$(date +%y%m%d)
+iso_version=$(date +%d%m%y)
 install_dir=arch
 work_dir=work
 out_dir=out
