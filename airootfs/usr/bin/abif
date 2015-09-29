@@ -1,4 +1,4 @@
-#!/bin/bash
+# !/bin/bash
 #
 # Arch Base Installation Framework (version 1.0 - 22-Sept-2015)
 #
@@ -395,49 +395,11 @@ create_new_user() {
         sed -i "s/$ISO_USER/$USER/g" ${MOUNTPOINT}/etc/shadow 2>>/tmp/.errlog
         mv ${MOUNTPOINT}/home/$ISO_USER ${MOUNTPOINT}/home/$USER 2>>/tmp/.errlog
         chown -R $USER:users ${MOUNTPOINT}/home/$USER 2>>/tmp/.errlog
+        sed -i '/%wheel ALL=(ALL) ALL/s/^#//' ${MOUNTPOINT}/etc/sudoers 2>>/tmp/.errlog
+        sed -i '/%wheel ALL=(ALL) ALL NOPASSWD: ALL/s/#%wheel ALL=(ALL) ALL NOPASSWD: ALL//' ${MOUNTPOINT}/etc/sudoers 2>>/tmp/.errlog
         check_for_error
     else
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrTitle" --inputbox "$_NUsrBody" 0 0 "" 2>${ANSWER} || config_user_menu
-        USER=$(cat ${ANSWER})
-        
-        # Loop while user name is blank, has spaces, or has capital letters in it.
-         while [[ ${#USER} -eq 0 ]] || [[ $USER =~ \ |\' ]] || [[ $USER =~ [^a-z0-9\ ] ]]; do
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrTitle" --inputbox "$_NUsrErrBody" 0 0 "" 2>${ANSWER} || config_user_menu
-              USER=$(cat ${ANSWER})
-        done
-        
-        # Enter password. This step will only be reached where the loop has been skipped or broken.
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
-        PASSWD=$(cat ${ANSWER}) 
-    
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody2 $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
-        PASSWD2=$(cat ${ANSWER}) 
-    
-        # loop while passwords entered do not match.
-        while [[ $PASSWD != $PASSWD2 ]]; do
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrErrTitle" --msgbox "$_PassNUsrErrBody" 0 0
-              
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
-              PASSWD=$(cat ${ANSWER}) 
-    
-              dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_PassNUsrTitle" --clear --insecure --passwordbox "$_PassNUsrBody2 $USER\n\n" 0 0 2> ${ANSWER} || config_user_menu
-              PASSWD2=$(cat ${ANSWER}) 
-        done      
-    
-        # create new user. This step will only be reached where the password loop has been skipped or broken.  
-        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrSetTitle" --infobox "$_NUsrSetBody" 0 0
-        sleep 2
-        # Create the user, set password, then remove temporary password file
-        arch_chroot "useradd ${USER} -m -g users -G wheel,storage,power,network,video,audio,lp -s /bin/bash" 2>/tmp/.errlog
-        check_for_error
-        echo -e "${PASSWD}\n${PASSWD}" > /tmp/.passwd
-        arch_chroot "passwd ${USER}" < /tmp/.passwd >/dev/null 2>/tmp/.errlog
-        rm /tmp/.passwd
-        check_for_error
-        # Set up basic configuration files and permissions for user
-        arch_chroot "cp /etc/skel/.bashrc /home/${USER}"
-        arch_chroot "chown -R ${USER}:users /home/${USER}"
-        sed -i '/%wheel ALL=(ALL) ALL/s/^#//' ${MOUNTPOINT}/etc/sudoers
+        dialog --backtitle "$VERSION - $SYSTEM ($ARCHI)" --title "$_NUsrSetTitle" --msgbox "$_NUsrExistBody" 0 0  
     fi
 }
 
@@ -1290,15 +1252,11 @@ install_root(){
   
 # copy files from bypass to install device
   clear
-  rsync -a --progress $BYPASS/ $MOUNTPOINT/ # \
-  #   | awk -f /tmp/rsync.awk \
-  #   | sed --unbuffered 's/([0-9]*).*/\1/' \
-  #   | dialog --title "Test Title" --gauge "Installing please wait..." 20 70
-
- 
- umount -l $BYPASS
-# remove abif from openbox menu
-  sed -i '/abif/,+3d' $MOUNTPOINT/home/ablive/.config/obmenu-generator/schema.pl
+  rsync -a --progress $BYPASS/ $MOUNTPOINT/ 2>/tmp/.errlog
+  check_for_error
+  umount -l $BYPASS
+# remove abinstall from openbox menu
+  sed -i '/abinstall/,+3d' $MOUNTPOINT/home/ablive/.config/obmenu-generator/schema.pl
 # set xkeyboard map
   sed -i "s/us/${KEYMAP_XKB:0:2}/g" $MOUNTPOINT/etc/X11/xorg.conf.d/01-keyboard-layout.conf
 # set up kernel for mkiniticpio
@@ -1308,13 +1266,10 @@ install_root(){
 # copy over new mirrorlist
   cp /etc/pacman.d/mirrorlist ${MOUNTPOINT}/etc/pacman.d/mirrorlist
 # Clean up new install
-  rm -f ${MOUNTPOINT}/usr/bin/abif &> /dev/null
-  rm -f ${MOUNTPOINT}/usr/bin/english.trans
-  rm -f ${MOUNTPOINT}/usr/bin/lastmin &> /dev/null
+  rm -f ${MOUNTPOINT}/usr/bin/abinstall &> /dev/null
   rm -rf ${MOUNTPOINT}/vomi &> /dev/null
   rm -rf ${BYPASS} &> /dev/null
   rm -rf ${MOUNTPOINT}/source &> /dev/null
-  rm -rf ${MOUNTPOINT}/src &> /dev/null
   rmdir ${MOUNTPOINT}/bypass &> /dev/null
   rmdir ${MOUNTPOINT}/src &> /dev/null
   rmdir ${MOUNTPOINT}/source &> /dev/null
@@ -1324,7 +1279,6 @@ install_root(){
  
 # systemd
   rm ${MOUNTPOINT}/etc/systemd/system/default.target &> /dev/null
-  arch_chroot  "/usr/bin/systemctl -f disable lastmin.service || true"
 
 # Journal 
   sed -i 's/volatile/auto/g' ${MOUNTPOINT}/etc/systemd/journald.conf
@@ -1381,7 +1335,7 @@ bios_bootloader() {
              BOOTLOADER="Grub"
              ;;
         "2") # Syslinux
-             arch_chroot "syslinux-install_update -iam" 2>>/tmp/.errlog
+             arch_chroot "syslinux-install_update -iam" 2>/tmp/.errlog
              check_for_error
              
              # Amend configuration file depending on whether lvm used or not for root.

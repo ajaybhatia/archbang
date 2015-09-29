@@ -58,7 +58,7 @@ openssh
 pkgfile
 clonezilla
 ncdu
-tmux
+#tmux
 lxterminal
 arch-install-scripts
 wget
@@ -106,7 +106,6 @@ parted
 gptfdisk
 ddrescue
 dmraid
-f2fs-tools
 
 # Intel microcode
 intel-ucode
