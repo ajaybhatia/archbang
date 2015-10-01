@@ -11,9 +11,6 @@
 #xxkb &
 #setxkbmap us &
 
-# File manager (daemon mode)
-(sleep 2 && spacefm -d) &
-
 # Networking system tray applet
 (sleep 3 && nm-applet) &
 
