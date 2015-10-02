@@ -5,14 +5,6 @@ Please note any problems related to ArchBang should be posted on our
 problems to Archlinux forums it will result in at best your thread closed or
 worse deleted.
 
-====Cheat Codes Live====
-
-Here is a list of codes that can be used at boot time, to edit boot options while
-on boot menu hit Tab key then add code/s you require
-
-sshd=on [start ssh service, password is not required live]
-xorg=<driver_name> [nouveau,ati,savage,vesa]
-
 ====Installation====
 Make sure that all the partitions of the disk on which you'll install ArchBang
 Linux are unmounted & that the sound isn't used by any applications.
@@ -21,8 +13,6 @@ Select install from main openbox menu [right click].
 
 Installer is a menu driven script you simply enter the number of the option and follow on
 screen instructions.
-
-Note the only option that is not required during install is mirrorlist.
 
 Installation does not take that long, really depends on your systems hardware.
 
@@ -59,10 +49,6 @@ You can check what drivers you have installed by running
  xf86-video-voodoo xf86-video-xgi xf86-video-xgixp\
  ati-dri intel-dri mach64-dri mga-dri r128-dri\
  savage-dri sis-dri tdfx-dri
-
-Type in terminal as root:
-
-  rm /etc/X11/xorg.conf.d/20-gpudriver.conf
 
 To know your video chipset type in terminal
 

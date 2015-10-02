@@ -39,9 +39,6 @@ dmenu
 volumeicon
 lxdm
 conky
-nitrogen
-#xcompmgr
-gmrun
 archlinux-xdg-menu
 
 # extra tools
@@ -65,15 +62,8 @@ lxterminal
 arch-install-scripts
 wget
 firefox
-gstreamer0.10-base-plugins
-gstreamer0.10-good
 scrot
 mate-themes
-#mate-icon-theme-faenza
-
-# Media
-#deadbeef
-#libmad
 
 obconf
 lxappearance
@@ -87,6 +77,7 @@ wpa_supplicant
 libsecret
 polkit
 rfkill
+# three too remove
 networkmanager
 network-manager-applet
 xfce4-notifyd
