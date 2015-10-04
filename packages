@@ -13,7 +13,6 @@ spacefm
 udevil
 
 # Text editor
-#leafpad
 geany
 
 # Xorg
@@ -57,7 +56,6 @@ openssh
 pkgfile
 clonezilla
 ncdu
-#tmux
 lxterminal
 arch-install-scripts
 wget
