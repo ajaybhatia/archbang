@@ -1,2 +1,5 @@
-Update abif before a new release..
+add abinstall remove from menu fix
+
+update configs
+
 

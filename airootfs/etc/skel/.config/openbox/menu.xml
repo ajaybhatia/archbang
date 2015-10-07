@@ -5,6 +5,10 @@
 <menu id="applications" label="Applications" execute="xdg_menu --format openbox3-pipe --root-menu /etc/xdg/menus/arch-applications.menu" />
 
 <separator/>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 384db2c8d81d5a6bd25eb344530afd66ab45b4d8
 <item label="Install"><action name="Execute"><execute>lxterminal -e 'sudo abinstall'</execute></action></item>
 <item label="Guide"><action name="Execute"><execute>update_doc</execute></action></item>
 <separator/>
