@@ -6,20 +6,8 @@
 
 <separator/>
 
-<item label="Install">
-<action name="Execute">
-<execute>
-lxterminal -e 'sudo /abif-master/abif'
-</execute>
-</action>
-</item>
-
-<item label="Guide">
-<action name="Execute">
-<execute>update_doc</execute>
-</action>
-</item>
-
+<item label="Install"><action name="Execute"><execute>lxterminal -e 'sudo abinstall'</execute></action></item>
+<item label="Guide"><action name="Execute"><execute>update_doc</execute></action></item>
 <separator/>
 
 <menu id="root-menu-logout" label="Exit">
