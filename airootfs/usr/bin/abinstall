@@ -658,7 +658,7 @@ format_partitions(){
 
 # Install ArchBang from iso image no net required
 install_root_image(){
-<<<<<<< HEAD
+#<<<<<<< HEAD
 
   print_title "INSTALL SYSTEM"
 
@@ -690,7 +690,7 @@ install_root_image(){
 # Clean up new install
   rm -f ${DESTDIR}/usr/bin/abinstall &> /dev/null
   rm -rf ${DESTDIR}/vomi &> /dev/null
-=======
+#=======
   print_title "INSTALL SYSTEM"
   echo
 
@@ -729,15 +729,12 @@ sed -i '/Install/,+2d' $DESTDIR/home/ablive/.config/openbox/menu.xml
   rmdir ${DESTDIR}/bypass &> /dev/null
 #  rmdir ${DESTDIR}/src &> /dev/null
   rmdir ${DESTDIR}/source &> /dev/null
->>>>>>> 384db2c8d81d5a6bd25eb344530afd66ab45b4d8
 
 # clean out archiso files from install
   find ${DESTDIR}/usr/lib/initcpio -name archiso* -type f -exec rm '{}' \;
 
 # systemd
   rm ${DESTDIR}/etc/systemd/system/default.target &> /dev/null
-<<<<<<< HEAD
-=======
 #  arch_chroot  "/usr/bin/systemctl -f disable lastmin.service || true"
 #  arch_chroot  "/usr/bin/systemctl -f disable multi-user.target || true"
 #  arch_chroot  "/usr/bin/systemctl -f disable pacman-init.service || true"
@@ -746,7 +743,6 @@ sed -i '/Install/,+2d' $DESTDIR/home/ablive/.config/openbox/menu.xml
 # remove pacman-init keys wil have to be set up by user
 #  rm ${DESTDIR}/etc/systemd/system/pacman-init.service &> /dev/null
 
->>>>>>> 384db2c8d81d5a6bd25eb344530afd66ab45b4d8
   sed -i 's/volatile/auto/g' /${DESTDIR}/etc/systemd/journald.conf
 
 # Stop pacman complaining
