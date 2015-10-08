@@ -16,8 +16,8 @@ border_color = #828282 0
 # ID 2 - task active
 rounded = 1
 border_width = 0
-background_color = #577388 30
-border_color = #577388 30
+background_color = #460101 30
+border_color = #460101 30
 
 # ID 3 - task
 rounded = 1
