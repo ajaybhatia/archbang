@@ -1,7 +1,3 @@
-Edit README/DOC wiki
+update configs
 
-64bit packages up to date
-i686 need building
-
-update git once isos built
 

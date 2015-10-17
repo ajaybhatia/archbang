@@ -13,7 +13,7 @@ spacefm
 udevil
 
 # Text editor
-leafpad
+geany
 
 # Xorg
 xorg-server
@@ -38,9 +38,7 @@ dmenu
 volumeicon
 lxdm
 conky
-nitrogen
-xcompmgr
-gmrun
+archlinux-xdg-menu
 
 # extra tools
 gparted
@@ -59,20 +57,12 @@ openssh
 pkgfile
 clonezilla
 ncdu
-tmux
 lxterminal
 arch-install-scripts
 wget
 firefox
-gstreamer0.10-base-plugins
-gstreamer0.10-good
 scrot
 mate-themes
-mate-icon-theme-faenza
-
-# Media
-deadbeef
-libmad
 
 obconf
 lxappearance
@@ -86,6 +76,7 @@ wpa_supplicant
 libsecret
 polkit
 rfkill
+# three too remove
 networkmanager
 network-manager-applet
 xfce4-notifyd
@@ -107,7 +98,6 @@ parted
 gptfdisk
 ddrescue
 dmraid
-f2fs-tools
 
 # Intel microcode
 intel-ucode

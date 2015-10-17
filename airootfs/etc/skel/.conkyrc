@@ -16,10 +16,10 @@ draw_shades no
 draw_outline no
 draw_borders no
 draw_graph_borders no
-default_color gray
+default_color white
 default_shade_color 000000
 default_outline_color d9d7d6
-alignment tr
+alignment tl
 gap_x 12
 gap_y 12
 no_buffers yes

@@ -3,16 +3,13 @@
 (sleep 1s && tint2) &
 
 # Set wallpaper
-(sleep 1s && nitrogen --restore) &
+(sleep 1s && feh --bg-scale /usr/share/wallpapers/autumn-leaves.jpg) &
 
 # Enable as required
 #xbacklight -set 100 &
 #/usr/bin/synclient TouchpadOff=1 &
 #xxkb &
 #setxkbmap us &
-
-# File manager (daemon mode)
-(sleep 2 && spacefm -d) &
 
 # Networking system tray applet
 (sleep 3 && nm-applet) &

@@ -333,7 +333,7 @@ cases. -->
 
 <keybind key="W-e">
 <action name="Execute">
-<command>leafpad</command>
+<command>geany</command>
 <startupnotify>
 <enabled>yes</enabled>
 <name>Leafpad</name>

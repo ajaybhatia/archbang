@@ -9,11 +9,6 @@ fi
 
 /usr/bin/xdg-user-dirs-update
 
-# configure obmenu user
-sed -i 's/ablive/'$(whoami)'/' ~/.config/obmenu-generator/schema.pl \
-                             ~/.config/obmenu-generator/config.pl  
-
-
 /usr/bin/openbox-session > ~/.openbox_startup.log 2>&1
 
 

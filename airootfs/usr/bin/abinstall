@@ -658,6 +658,39 @@ format_partitions(){
 
 # Install ArchBang from iso image no net required
 install_root_image(){
+#<<<<<<< HEAD
+
+  print_title "INSTALL SYSTEM"
+
+  echo "Installing please wait..."
+  AIROOTFS="/run/archiso/sfs/airootfs/"
+     rsync -a --progress /run/archiso/sfs/airootfs/ $DESTDIR/ 2>/tmp/inst_log
+
+# remove abinstall from openbox menu
+  sed -i '/Install/,+2d' $DESTDIR/home/ablive/.config/openbox/menu.xml
+
+# set xkeyboard map
+  sed -i "s/us/${KEYMAP_XKB:0:2}/g" $DESTDIR/etc/X11/xorg.conf.d/01-keyboard-layout.conf
+
+# add in password again for sudo
+  sed -i '/^%wheel/s/NOPASSWD://g' $DESTDIR/etc/sudoers
+
+# set /home/ablive with user permissions
+  arch_chroot "chown ablive:users /home/ablive -R &> /dev/null"
+
+# set up kernel for mkiniticpio
+  cp /run/archiso/bootmnt/arch/boot/${ARCHI}/vmlinuz ${DESTDIR}/boot/vmlinuz-linux
+
+# put live driver into new install
+  cp /etc/X11/xorg.conf.d/20-gpudriver.conf ${DESTDIR}/etc/X11/xorg.conf.d/20-gpudriver.conf &>/dev/null
+
+# copy over new mirrorlist
+  cp /etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist
+
+# Clean up new install
+  rm -f ${DESTDIR}/usr/bin/abinstall &> /dev/null
+  rm -rf ${DESTDIR}/vomi &> /dev/null
+#=======
   print_title "INSTALL SYSTEM"
   echo
 
@@ -670,8 +703,10 @@ install_root_image(){
   echo "Installing please wait..."
   rsync -a --info=progress2 $BYPASS/ $DESTDIR/
   umount -l $BYPASS
-# remove abinstall from openbox menu
-  sed -i '/abinstall/,+3d' $DESTDIR/home/ablive/.config/obmenu-generator/schema.pl
+
+# remove abinstall from openbox me
+sed -i '/Install/,+2d' $DESTDIR/home/ablive/.config/openbox/menu.xml
+
 # set xkeyboard map
   sed -i "s/us/${KEYMAP_XKB:0:2}/g" $DESTDIR/etc/X11/xorg.conf.d/01-keyboard-layout.conf
 # add in password again for sudo
@@ -686,13 +721,13 @@ install_root_image(){
   cp /etc/pacman.d/mirrorlist ${DESTDIR}/etc/pacman.d/mirrorlist
 # Clean up new install
   rm -f ${DESTDIR}/usr/bin/abinstall &> /dev/null
-  rm -f ${DESTDIR}/usr/bin/lastmin &> /dev/null
+#  rm -f ${DESTDIR}/usr/bin/lastmin &> /dev/null
   rm -rf ${DESTDIR}/vomi &> /dev/null
   rm -rf ${BYPASS} &> /dev/null
   rm -rf ${DESTDIR}/source &> /dev/null
   rm -rf ${DESTDIR}/src &> /dev/null
   rmdir ${DESTDIR}/bypass &> /dev/null
-  rmdir ${DESTDIR}/src &> /dev/null
+#  rmdir ${DESTDIR}/src &> /dev/null
   rmdir ${DESTDIR}/source &> /dev/null
 
 # clean out archiso files from install
@@ -700,7 +735,7 @@ install_root_image(){
 
 # systemd
   rm ${DESTDIR}/etc/systemd/system/default.target &> /dev/null
-  arch_chroot  "/usr/bin/systemctl -f disable lastmin.service || true"
+#  arch_chroot  "/usr/bin/systemctl -f disable lastmin.service || true"
 #  arch_chroot  "/usr/bin/systemctl -f disable multi-user.target || true"
 #  arch_chroot  "/usr/bin/systemctl -f disable pacman-init.service || true"
 #  rm ${DESTDIR}/etc/systemd/system/lastmin.service &> /dev/null
